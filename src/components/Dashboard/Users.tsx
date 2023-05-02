@@ -1,8 +1,8 @@
 import React from "react";
-import users from "/svg/icon 4.svg";
-import activeUsers from "/svg/icon (1).svg";
-import loanUsers from "/svg/icon (2).svg";
-import savingsUsers from "/svg/icon (3).svg";
+// import users from ;
+// import activeUsers from ;
+// import loanUsers from ;
+// import savingsUsers from ;
 
 function Users() {
   type userInfo = {
@@ -12,22 +12,22 @@ function Users() {
   };
   let userTypes: userInfo[] = [
     {
-      icon: users,
+      icon: "/svg/icon 4.svg",
       userType: "Users",
       amount: "2,453",
     },
     {
-      icon: activeUsers,
+      icon: "/svg/icon (1).svg",
       userType: "ACTIVE USERS",
       amount: "2,453",
     },
     {
-      icon: loanUsers,
+      icon: "/svg/icon (2).svg",
       userType: "USERS WITH LOANS",
       amount: "12,453",
     },
     {
-      icon: savingsUsers,
+      icon: "/svg/icon (3).svg",
       userType: "USERS WITH SAVINGS",
       amount: "10,2453",
     },

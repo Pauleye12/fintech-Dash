@@ -1,37 +1,40 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "/svg/Group.svg";
-import SearchIcon from "/svg/searchIcon.svg";
-import NotificationBell from "/svg/headerNotification.svg";
-import dropdown from "/svg/headerDropdown.svg";
-import Avatar from "/images/avatar.png";
-function Header({Logo}) {
+// import logo from "/svg/Group.svg";
+// import SearchIcon from ;
+// import NotificationBell from "/svg/headerNotification.svg";
+// import dropdown from ;
+// import Avatar from "/images/avatar.png";
+
+
+
+function Header({Logo}:{Logo:boolean}) {
   return (
     <div className="dashboardHeader">
       <div className="leftHeader">
         {Logo && (
           <div className="logoWrapper">
-            <img src={logo} alt="" />
+            <img src="/svg/Group.svg" alt="" />
           </div>
         )}
         <div className="dashboardSearchBar">
           <input type="text" placeholder="search for anything" />
           <Link to="/User">
             <button>
-              <img src={SearchIcon} alt="" />
+              <img src="/svg/searchIcon.svg" alt="" />
             </button>
           </Link>
         </div>
       </div>
       <div className="rightHeader">
         <a href="http://">Docs</a>
-        <img src={NotificationBell} alt="" />
+        <img src="/svg/headerNotification.svg" alt="" />
         <div className="currentUserDetails">
-          <img src={Avatar} alt="" />
+          <img src="/images/avatar.png" alt="" />
           <div className="dropdown">
             <h2>Adedeji</h2>
             <button>
-              <img src={dropdown} alt="" />
+              <img src="/svg/headerDropdown.svg" alt="" />
             </button>
           </div>
         </div>

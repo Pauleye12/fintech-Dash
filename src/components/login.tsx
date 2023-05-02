@@ -1,6 +1,4 @@
 import React from "react";
-import logo from "/svg/Group.svg";
-import loginImgWrapper from "/svg/pablo-sign-in 1.svg";
 import { Link } from "react-router-dom";
 
 function Login() {
@@ -9,11 +7,11 @@ function Login() {
       <div className="loginWrapper">
         <div className="leftLogin">
           <div className="headerLogo">
-            <img className="logoImg" src={logo} alt="" />
+            <img className="logoImg" src="/svg/Group.svg" alt="" />
           </div>
           <div className="leftImg">
             <div className="loginImgWrapper">
-              <img src={loginImgWrapper} alt="" />
+              <img src="/svg/pablo-sign-in 1.svg" alt="" />
             </div>
           </div>
         </div>

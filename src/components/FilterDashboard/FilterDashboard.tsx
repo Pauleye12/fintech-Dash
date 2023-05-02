@@ -1,5 +1,5 @@
 import React from "react";
-import Dashboarddetails from "../Dashboard/Dashboarddetails";
+import Dashboarddetails from "../Dashboard/DashboardDetails";
 import Header from "../Dashboard/Header";
 
 function FilterDashboard() {

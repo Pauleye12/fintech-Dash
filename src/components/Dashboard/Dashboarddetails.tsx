@@ -2,7 +2,7 @@ import React from 'react'
 
 import Users from './Users';
 import Table from './Table';
-function Dashboarddetails({Filter}) {
+function Dashboarddetails({Filter}:{Filter:boolean}) {
 
     
   return (

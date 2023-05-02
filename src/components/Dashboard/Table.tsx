@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from "react";
-import filterSVG from "/svg/filter-results-button.svg";
 import dropDown from "/svg/Vector.svg";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -8,9 +7,51 @@ import advancedFormat from "dayjs/plugin/advancedFormat";
 dayjs.extend(utc);
 dayjs.extend(advancedFormat);
 
-function Table({ Filter }) {
-  const [tableInfo, setTableInfo] = useState([]);
-  const [pageNumber, setPageNumber] = useState(0);
+interface TableCont {
+  createdAt: string;
+  orgName: string;
+  userName: string;
+  email: string;
+  phoneNumber: string;
+  lastActiveDate: string;
+  profile: {
+    firstName: string;
+    lastName: string;
+    phoneNumber: string;
+    avatar: string;
+    gender: string;
+    bvn: string;
+    address: string;
+    currency: string;
+  };
+  guarantor: {
+    firstName: string;
+    lastName: string;
+    phoneNumber: string;
+    gender: string;
+    address: string;
+  };
+  accountBalance: string;
+  accountNumber: string;
+  socials: { facebook: string; instagram: string; twitter: string };
+  education: {
+    level: string;
+    employmentStatus: string;
+    sector: string;
+    duration: string;
+    officeEmail: string;
+    monthlyIncome: [string, string];
+    loanRepayment: string;
+  };
+  id: string;
+}
+
+function Table({ Filter }: {Filter:boolean}) {
+  const [tableInfo, setTableInfo] = useState<TableCont[]>([]);
+  const [pageNumber, setPageNumber] = useState
+  (0);
+  
+
 
   useEffect(() => {
     const fetchTableData = async () => {
@@ -18,7 +59,7 @@ function Table({ Filter }) {
         const res = await fetch(
           "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users"
         );
-        const resJson = await res.json();
+        const resJson : TableCont[] = await res.json();
         setTableInfo(resJson);
       } catch (error) {
         console.log("error fetching data");
@@ -29,7 +70,7 @@ function Table({ Filter }) {
 
   
   let contentNum: number = 10;
-
+  // const arr = Array(10)
 
   let pageContent = tableInfo.slice(
     pageNumber * contentNum,
@@ -51,37 +92,37 @@ function Table({ Filter }) {
             <th className="dashTh">
               <div>
                 <h1>Organization</h1>
-                <img src={filterSVG} alt="" />
+                <img src="/svg/filter-results-button.svg" alt="" />
               </div>
             </th>
             <th className="dashTh">
               <div>
                 <h1>username</h1>
-                <img src={filterSVG} alt="" />
+                <img src="/svg/filter-results-button.svg" alt="" />
               </div>
             </th>
             <th className="dashTh">
               <div>
                 <h1>email</h1>
-                <img src={filterSVG} alt="" />
+                <img src={"/svg/filter-results-button.svg"} alt="" />
               </div>
             </th>
             <th className="dashTh">
               <div>
                 <h1>phone number</h1>
-                <img src={filterSVG} alt="" />
+                <img src="/svg/filter-results-button.svg" alt="" />
               </div>
             </th>
             <th className="dashTh">
               <div>
                 <h1>date joined</h1>
-                <img src={filterSVG} alt="" />
+                <img src="/svg/filter-results-button.svg" alt="" />
               </div>
             </th>
             <th className="dashTh">
               <div>
                 <h1>status</h1>
-                <img src={filterSVG} alt="" />
+                <img src="/svg/filter-results-button.svg" alt="" />
               </div>
             </th>
           </tr>

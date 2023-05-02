@@ -1,6 +1,11 @@
 import React from 'react'
 
-function CustomerSection({data}) {
+
+type customerArrayDets = {
+  icon: string;
+  text: string;
+};
+function CustomerSection({ data }: { data: customerArrayDets[] }) {
   return (
     <div>
       <section className="customerSection">

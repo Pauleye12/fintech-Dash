@@ -1,26 +1,26 @@
 import React from "react";
-import briefcase from "/svg/briefcase 1.svg";
-import dropdown from "/svg/dropdownSidebar.svg";
-import home from "/svg/home 1.svg";
-import user from "/svg/user-friends 1.svg";
-import guarantor from "/svg/users 1.svg";
-import loans from "/svg/sack 1.svg";
-import decision from "/svg/handshake-regular 1.svg";
-import loanReq from "/svg/Group 104.svg";
-import savings from "/svg/piggy-bank 1.svg";
-import whitelist from "/svg/user-check 1.svg";
-import karma from "/svg/user-times 1.svg";
+// import briefcase from ;
+// import dropdown from ;
+// import home from ;
+// import user from "/svg/user-friends 1.svg";
+// import guarantor from ;
+// import loans from ;
+// import decision from ;
+// import loanReq from ;
+// import savings from ;
+// import whitelist from ;
+// import karma from ;
 import CustomerSection from "./CustomerSection";
-import savingsProduct from "/svg/np_bank_148501_000000 1.svg";
-import fees from "/svg/coins-solid 1.svg";
-import transaction from "/svg/icon.svg";
-import services from "/svg/galaxy 1.svg";
-import serviceAccount from "/svg/user-cog 1.svg";
-import settlements from "/svg/scroll 1.svg";
-import reports from "/svg/chart-bar 2.svg";
-import preference from "/svg/sliders-h 1.svg";
-import pricing from "/svg/badge-percent 1.svg";
-import audit from "/svg/clipboard-list 1.svg";
+// import savingsProduct from ;
+// import fees from ;
+// import transaction from ;
+// import services from ;
+// import serviceAccount from ;
+// import settlements from ;
+// import reports from ;
+// import preference from ;
+// import pricing from ;
+// import audit from ;
 
 function Sidebar() {
   type customerArrayDets = {
@@ -30,89 +30,89 @@ function Sidebar() {
 
   let customerArray: customerArrayDets[] = [
     {
-      icon: `${user}`,
+      icon: "/svg/user-friends 1.svg",
       text: "Users",
     },
     {
-      icon: `${guarantor}`,
+      icon: "/svg/users 1.svg",
       text: "Guarantors",
     },
     {
-      icon: `${loans}`,
+      icon: "/svg/sack 1.svg",
       text: "Loans",
     },
     {
-      icon: `${decision}`,
+      icon: "/svg/handshake-regular 1.svg",
       text: "Decision Models",
     },
     {
-      icon: `${savings}`,
+      icon: "/svg/piggy-bank 1.svg",
       text: "Savings",
     },
     {
-      icon: `${loanReq}`,
+      icon: "/svg/Group 104.svg",
       text: "Loan Requests",
     },
     {
-      icon: `${whitelist}`,
+      icon: "/svg/user-check 1.svg",
       text: "Whitelist",
     },
     {
-      icon: `${karma}`,
+      icon: "/svg/user-times 1.svg",
       text: "karma",
     },
   ];
 
   let businessArray: customerArrayDets[] = [
     {
-      icon: briefcase,
+      icon: "/svg/briefcase 1.svg",
       text: "Organisation",
     },
     {
-      icon: loanReq,
+      icon: "/svg/Group 104.svg",
       text: "Loan Products",
     },
     {
-      icon: savingsProduct,
+      icon: "/svg/np_bank_148501_000000 1.svg",
       text: "Saving Products",
     },
     {
-      icon: fees,
+      icon: "/svg/coins-solid 1.svg",
       text: "Fees and Charges",
     },
     {
-      icon: transaction,
+      icon: "/svg/icon.svg",
       text: "Transactions",
     },
     {
-      icon: services,
+      icon: "/svg/galaxy 1.svg",
       text: "Service",
     },
     {
-      icon: serviceAccount,
+      icon: "/svg/user-cog 1.svg",
       text: "Service Account",
     },
     {
-      icon: settlements,
+      icon: "/svg/scroll 1.svg",
       text: "Settlements",
     },
     {
-      icon: reports,
+      icon: "/svg/chart-bar 2.svg",
       text: "Reports",
     },
   ];
 
    let settingsArray: customerArrayDets[] = [
      {
-       icon: preference,
+       icon: "/svg/sliders-h 1.svg",
        text: "Prefrence",
      },
      {
-       icon: pricing,
+       icon: "/svg/badge-percent 1.svg",
        text: "Fees and Pricing",
      },
      {
-       icon: audit,
+       icon: "/svg/clipboard-list 1.svg",
        text: "Audit Logs",
      },
     
@@ -123,12 +123,12 @@ function Sidebar() {
       <div className="sidebarContainer">
         <div className="firstSidebarContent">
           <div className="switchOrganization sidebarOptions">
-            <img src={briefcase} alt="" />
+            <img src="/svg/briefcase 1.svg" alt="" />
             <h2>Switch Organization</h2>
-            <img src={dropdown} alt="" />
+            <img src="/svg/dropdownSidebar.svg" alt="" />
           </div>
           <div className="sidebarOptions">
-            <img src={home} alt="" />
+            <img src="/svg/home 1.svg" alt="" />
             <h2>Dashboard</h2>
           </div>
         </div>
