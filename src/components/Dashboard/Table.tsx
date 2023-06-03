@@ -3,7 +3,7 @@ import dropDown from "/svg/Vector.svg";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import advancedFormat from "dayjs/plugin/advancedFormat";
-
+import { Link } from "react-router-dom";
 dayjs.extend(utc);
 dayjs.extend(advancedFormat);
 
@@ -46,12 +46,11 @@ interface TableCont {
   id: string;
 }
 
-function Table({ Filter }: {Filter:boolean}) {
+function Table({ Filter }: { Filter: boolean }) {
   const [tableInfo, setTableInfo] = useState<TableCont[]>([]);
-  const [pageNumber, setPageNumber] = useState
-  (0);
-  
-
+  const [pageNumber, setPageNumber] = useState(0);
+  const [hideBtnIncr, setHideBtnIncr] = useState(false);
+  const [hideBtnDecr, setHideBtnDecr] = useState(false);
 
   useEffect(() => {
     const fetchTableData = async () => {
@@ -59,8 +58,9 @@ function Table({ Filter }: {Filter:boolean}) {
         const res = await fetch(
           "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users"
         );
-        const resJson : TableCont[] = await res.json();
+        const resJson: TableCont[] = await res.json();
         setTableInfo(resJson);
+        console.log("hy");
       } catch (error) {
         console.log("error fetching data");
       }
@@ -68,10 +68,12 @@ function Table({ Filter }: {Filter:boolean}) {
     fetchTableData();
   }, []);
 
-  
   let contentNum: number = 10;
-  // const arr = Array(10)
-
+  const totPage: number = tableInfo.length / contentNum;
+  // console.log(tableInfo.length)
+  // console.log(totPage)
+  const BtnArr = Array(totPage);
+  // console.log(`length of mumu array = ${BtnArr.length}`)
   let pageContent = tableInfo.slice(
     pageNumber * contentNum,
     pageNumber * contentNum + contentNum
@@ -83,6 +85,27 @@ function Table({ Filter }: {Filter:boolean}) {
     },
     [tableInfo]
   );
+
+  let prevPage = () => {
+    if (pageNumber <= 0) {
+      setHideBtnDecr(true);
+    } else {
+      setHideBtnDecr(false);
+      setHideBtnIncr(false);
+      setPageNumber(pageNumber - 1);
+    }
+  };
+
+  let nextPage = () => {
+    if (pageNumber <= BtnArr.length - 2) {
+      setPageNumber(pageNumber + 1);
+      setHideBtnIncr(false);
+      setHideBtnDecr(false);
+    } else {
+      setHideBtnIncr(true);
+    }
+    // ?  :
+  };
 
   return (
     <div className="tableWrapper">
@@ -128,11 +151,13 @@ function Table({ Filter }: {Filter:boolean}) {
           </tr>
           {pageContent.map((data, index) => (
             <tr className="tableContent" key={index}>
-              <td className="dashTd orgName">
-                <div>
-                  <h1>{data.orgName}</h1>
-                </div>
-              </td>
+              <Link className="dashTd link orgName" to={`/User/details/${data.id}`}>
+                <td className="dashTd orgName">
+                  <div>
+                    <h1>{data.orgName}</h1>
+                  </div>
+                </td>
+              </Link>
               <td className="dashTd userName">
                 <div>
                   <h1>{data.userName}</h1>
@@ -239,46 +264,28 @@ function Table({ Filter }: {Filter:boolean}) {
             <span className="contentNumDisp">
               {contentNum} <img src={dropDown} alt="" />{" "}
             </span>{" "}
-            out of <span >{tableInfo.length} </span>
+            out of <span>{tableInfo.length} </span>
           </h1>
         </div>
         <div className="rightTableNav">
-          <button className="tableNavArrow left">
-            <img src={dropDown} alt="" />
-          </button>
-          <button className="page" onClick={selectPage(1)}>
-            1
-          </button>
-          <button className="page" onClick={selectPage(2)}>
-            2
-          </button>
-          <button className="page" onClick={selectPage(3)}>
-            3
-          </button>
-          <button className="page" onClick={selectPage(4)}>
-            4
-          </button>
-          <button className="page" onClick={selectPage(5)}>
-            5
-          </button>
-          <button className="page" onClick={selectPage(6)}>
-            6
-          </button>
-          <button className="page" onClick={selectPage(7)}>
-            7
-          </button>
-          <button className="page" onClick={selectPage(8)}>
-            8
-          </button>
-          <button className="page" onClick={selectPage(9)}>
-            9
-          </button>
-          <button className="page" onClick={selectPage(10)}>
-            10
-          </button>
-          <button className="tableNavArrow right">
-            <img src={dropDown} alt="" />
-          </button>
+          {!hideBtnDecr && (
+            <button onClick={prevPage} className="tableNavArrow left">
+              <img src={dropDown} alt="" />
+            </button>
+          )}
+
+          <div>
+            {BtnArr.map((e, index) => (
+              <button className="page" key={index} onClick={selectPage(index)}>
+                {index}
+              </button>
+            ))}
+          </div>
+          {!hideBtnIncr && (
+            <button onClick={nextPage} className="tableNavArrow right">
+              <img src={dropDown} alt="" />
+            </button>
+          )}
         </div>
       </section>
     </div>

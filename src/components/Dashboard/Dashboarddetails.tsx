@@ -1,18 +1,16 @@
-import React from 'react'
+import React from "react";
 
-import Users from './Users';
-import Table from './Table';
-function Dashboarddetails({Filter}:{Filter:boolean}) {
-
-    
+import Users from "./Users";
+import Table from "./Table";
+function Dashboarddetails({ Filter }: { Filter: boolean }) {
   return (
-      <div className='dashBody'>
-          <div className='dashBodyWrapper'>
-              <Users />
-              <Table Filter= {Filter} />
-          </div>
+    <div className="dashBody">
+      <div className="dashBodyWrapper">
+        <Users />
+        <Table Filter={Filter} />
+      </div>
     </div>
-  )
+  );
 }
 
-export default Dashboarddetails
+export default Dashboarddetails;

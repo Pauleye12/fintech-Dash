@@ -6,6 +6,7 @@ import './index.css'
 import Login from './components/login'
 import Dashboard from './components/Dashboard/Dashboard'
 import FilterDashboard from './components/FilterDashboard/FilterDashboard'
+import UserDetails from './components/UserDetails/UserDetails'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path='/User' element={<FilterDashboard/> } />
+          <Route path='/User/details/:id' element={<UserDetails/> } />
         </Routes>
       </Router>
     </div>
