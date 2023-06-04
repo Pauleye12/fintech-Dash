@@ -44,9 +44,10 @@ function UserDeatailsHeader({ ID_Info }: { ID_Info: IdCont }) {
     <div className="userDetailsHeaderContainer">
       <div className="userBasicInfo">
         <div className="userBasicInfoImg">
-          <img src="/svg/avatar.svg" alt="" />
+          <img src={ID_Info.profile.avatar} alt="" />
           <div className="userBasicInfoName">
-            <h1>Grace Effiom</h1> <h2>87485u894</h2>
+            <h1>{`${ID_Info.profile.firstName} ${ID_Info.profile.lastName}`}</h1>{" "}
+            <h2>{ID_Info.phoneNumber}</h2>
           </div>
         </div>
         <div className="userTiers">
@@ -58,8 +59,8 @@ function UserDeatailsHeader({ ID_Info }: { ID_Info: IdCont }) {
           </div>
         </div>
         <div className="userBalance">
-          <h2>#200,000.00</h2>
-          <p>3123361708/FirstBank</p>
+          <h2>{`${ID_Info.profile.currency} ${ID_Info.accountBalance}`}</h2>
+          <p>{`${ID_Info.accountNumber}/FIRSTBANK` }</p>
         </div>
       </div>
       <div className="userDetailsOptions">

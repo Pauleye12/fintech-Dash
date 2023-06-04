@@ -84,8 +84,8 @@ function UserDetails() {
           </div>
         </div>
         {ID_Info && (
-          <div>
-            <div className="userDetailsHeaderwrapper">
+          <div className="userDetailsInfo">
+            <div className="userDetailsHeaderWrapper">
               <UserDeatailsHeader ID_Info={ID_Info} />
             </div>
             <UserInformations ID_Info={ID_Info} />
