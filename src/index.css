@@ -6,7 +6,11 @@
   border: none;
   text-decoration: none;
 }
-
+.a{
+  display:table-row;
+  color: inherit;
+  width: 100%;
+}
 .loginWrapper {
   display: flex;
   padding: 20px;

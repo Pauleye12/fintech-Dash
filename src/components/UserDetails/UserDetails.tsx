@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Header from "../Dashboard/Header";
 import Sidebar from "../Dashboard/Sidebar";
 import UserDeatailsHeader from "./UserDeatailsHeader";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import UserInformations from "./UserInformations";
 
 interface IdCont {
@@ -72,10 +72,12 @@ function UserDetails() {
       <Header Logo={ShowLogo} />
       <Sidebar />
       <main className="">
-        <div className="backToUser">
-          <img src="/svg/backToUser.svg" alt="" />
-          <h2>Back To User</h2>
-        </div>
+        <Link to='/User'>
+          <div className="backToUser">
+            <img src="/svg/backToUser.svg" alt="" />
+            <h2>Back To User</h2>
+          </div>
+        </Link>
         <div className="userOptions">
           <h1>User Details</h1>
           <div>

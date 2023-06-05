@@ -1,26 +1,6 @@
 import React from "react";
-// import briefcase from ;
-// import dropdown from ;
-// import home from ;
-// import user from "/svg/user-friends 1.svg";
-// import guarantor from ;
-// import loans from ;
-// import decision from ;
-// import loanReq from ;
-// import savings from ;
-// import whitelist from ;
-// import karma from ;
+
 import CustomerSection from "./CustomerSection";
-// import savingsProduct from ;
-// import fees from ;
-// import transaction from ;
-// import services from ;
-// import serviceAccount from ;
-// import settlements from ;
-// import reports from ;
-// import preference from ;
-// import pricing from ;
-// import audit from ;
 
 function Sidebar() {
   type customerArrayDets = {

@@ -150,14 +150,13 @@ function Table({ Filter }: { Filter: boolean }) {
             </th>
           </tr>
           {pageContent.map((data, index) => (
-            <tr className="tableContent" key={index}>
-              <Link className="dashTd link orgName" to={`/User/details/${data.id}`}>
-                <td className="dashTd orgName">
-                  <div>
-                    <h1>{data.orgName}</h1>
-                  </div>
-                </td>
-              </Link>
+            <Link to={`/User/details/${data.id}`} className="tableContent a" key={index}>
+              <td className="dashTd orgName">
+                <div>
+                  <h1>{data.orgName}</h1>
+                </div>
+              </td>
+
               <td className="dashTd userName">
                 <div>
                   <h1>{data.userName}</h1>
@@ -185,7 +184,7 @@ function Table({ Filter }: { Filter: boolean }) {
                   <h1>status</h1>
                 </div>
               </td>
-            </tr>
+            </Link>
           ))}
           {Filter && (
             <section className="filterBox">
