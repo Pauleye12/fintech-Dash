@@ -43,13 +43,20 @@ interface IdCont {
   };
   id: string;
 }
-function UserDetails() {
+function UserDetails({
+  handleSidebar,
+  showSidebar,
+}: {
+  handleSidebar(): void;
+  showSidebar: boolean;
+}) {
   const navigate = useNavigate();
   const { id } = useParams();
   let ShowLogo: boolean = true;
   const [ID_Info, setID_Info] = useState<IdCont | undefined>(undefined);
-  console.log("guyyy");
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
+    setIsLoading(true)
     const fetchUserData = async () => {
       try {
         const res = await fetch(
@@ -58,21 +65,24 @@ function UserDetails() {
         );
         const resJson: IdCont = await res.json();
         setID_Info(resJson);
-        console.log("hy");
+        setIsLoading(false);
+        
       } catch (error) {
+        setIsLoading(false)
+        alert("error.message");
         console.log("error fetching data");
       }
     };
     fetchUserData();
   }, []);
 
-  console.log(ID_Info);
+  
   return (
     <div className="dashboardContainer userDetailsContainer">
-      <Header Logo={ShowLogo} />
-      <Sidebar />
+      <Header handleSidebar={handleSidebar} />
+      {showSidebar && <Sidebar />}
       <main className="">
-        <Link to='/User'>
+        <Link to="/Dashboard">
           <div className="backToUser">
             <img src="/svg/backToUser.svg" alt="" />
             <h2>Back To User</h2>
@@ -85,7 +95,7 @@ function UserDetails() {
             <button className="activate">ACTIVATE USER</button>
           </div>
         </div>
-        {ID_Info && (
+        {isLoading? <div>Loading, please wait</div>: ID_Info && (
           <div className="userDetailsInfo">
             <div className="userDetailsHeaderWrapper">
               <UserDeatailsHeader ID_Info={ID_Info} />

@@ -9,15 +9,34 @@ import FilterDashboard from './components/FilterDashboard/FilterDashboard'
 import UserDetails from './components/UserDetails/UserDetails'
 
 function App() {
+const [showSidebar, setShowSideBar] = useState(true);
 
+const toggleSidebar = (): void => {
+  setShowSideBar((prev) => !prev);
+};
   return (
     <div className="app">
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
-          <Route path='/User' element={<FilterDashboard/> } />
-          <Route path='/User/details/:id' element={<UserDetails/> } />
+          <Route
+            path="/Dashboard"
+            element={
+              <Dashboard
+                handleSidebar={toggleSidebar}
+                showSidebar={showSidebar}
+              />
+            }
+          />
+          <Route
+            path="/User/details/:id"
+            element={
+              <UserDetails
+                handleSidebar={toggleSidebar}
+                showSidebar={showSidebar}
+              />
+            }
+          />
         </Routes>
       </Router>
     </div>

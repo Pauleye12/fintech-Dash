@@ -2,12 +2,12 @@ import React from "react";
 
 import Users from "./Users";
 import Table from "./Table";
-function Dashboarddetails({ Filter }: { Filter: boolean }) {
+function Dashboarddetails() {
   return (
     <div className="dashBody">
       <div className="dashBodyWrapper">
         <Users />
-        <Table Filter={Filter} />
+        <Table />
       </div>
     </div>
   );

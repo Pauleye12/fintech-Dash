@@ -160,7 +160,7 @@ console.log(ID_Info);
   ];
     
   return (
-    <div>
+    
       <div className="userInformationContainer">
         {Info.map((e, index) => (
           <Details key={index} Info={e} />
@@ -168,7 +168,6 @@ console.log(ID_Info);
               
             
       </div>
-    </div>
   );
 }
 

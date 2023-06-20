@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 function Login() {
   return (
     <div className="loginContainer">
-      <div className="loginWrapper">
+      <div className="headerLogo">
+        <img className="logoImg" src="/svg/Group.svg" alt="" />
+      </div>
+      <div className="desktopLoginWrapper">
         <div className="leftLogin">
           <div className="headerLogo">
             <img className="logoImg" src="/svg/Group.svg" alt="" />

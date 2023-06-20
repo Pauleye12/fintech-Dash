@@ -46,13 +46,19 @@ interface TableCont {
   id: string;
 }
 
-function Table({ Filter }: { Filter: boolean }) {
+function Table() {
   const [tableInfo, setTableInfo] = useState<TableCont[]>([]);
   const [pageNumber, setPageNumber] = useState(0);
   const [hideBtnIncr, setHideBtnIncr] = useState(false);
   const [hideBtnDecr, setHideBtnDecr] = useState(false);
+  const [showFilter, setShowFilter] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
+  const toggleFilter = ():void => {
+    setShowFilter((prev) => !prev)
+  }
   useEffect(() => {
+    setIsLoading(true)
     const fetchTableData = async () => {
       try {
         const res = await fetch(
@@ -60,8 +66,11 @@ function Table({ Filter }: { Filter: boolean }) {
         );
         const resJson: TableCont[] = await res.json();
         setTableInfo(resJson);
+        setIsLoading(false)
         console.log("hy");
       } catch (error) {
+        alert("error.message")
+        setIsLoading(false);
         console.log("error fetching data");
       }
     };
@@ -115,42 +124,70 @@ function Table({ Filter }: { Filter: boolean }) {
             <th className="dashTh">
               <div>
                 <h1>Organization</h1>
-                <img src="/svg/filter-results-button.svg" alt="" />
+                <img
+                  src="/svg/filter-results-button.svg"
+                  onClick={toggleFilter}
+                   alt=""
+                />
               </div>
             </th>
             <th className="dashTh">
               <div>
                 <h1>username</h1>
-                <img src="/svg/filter-results-button.svg" alt="" />
+                <img
+                  src="/svg/filter-results-button.svg"
+                  onClick={toggleFilter}
+                  alt=""
+                />
               </div>
             </th>
             <th className="dashTh">
               <div>
                 <h1>email</h1>
-                <img src={"/svg/filter-results-button.svg"} alt="" />
+                <img
+                  src="/svg/filter-results-button.svg"
+                  onClick={toggleFilter}
+                  alt=""
+                />
               </div>
             </th>
             <th className="dashTh">
               <div>
                 <h1>phone number</h1>
-                <img src="/svg/filter-results-button.svg" alt="" />
+                <img
+                  src="/svg/filter-results-button.svg"
+                  onClick={toggleFilter}
+                  alt=""
+                />
               </div>
             </th>
             <th className="dashTh">
               <div>
                 <h1>date joined</h1>
-                <img src="/svg/filter-results-button.svg" alt="" />
+                <img
+                  src="/svg/filter-results-button.svg"
+                  onClick={toggleFilter}
+                  alt=""
+                />
               </div>
             </th>
             <th className="dashTh">
               <div>
                 <h1>status</h1>
-                <img src="/svg/filter-results-button.svg" alt="" />
+                <img
+                  src="/svg/filter-results-button.svg"
+                  onClick={toggleFilter}
+                  alt=""
+                />
               </div>
             </th>
           </tr>
-          {pageContent.map((data, index) => (
-            <Link to={`/User/details/${data.id}`} className="tableContent a" key={index}>
+          {isLoading? <div>Loading, please wait</div>: pageContent.map((data, index) => (
+            <Link
+              to={`/User/details/${data.id}`}
+              className="tableContent a"
+              key={index}
+            >
               <td className="dashTd orgName">
                 <div>
                   <h1>{data.orgName}</h1>
@@ -186,7 +223,7 @@ function Table({ Filter }: { Filter: boolean }) {
               </td>
             </Link>
           ))}
-          {Filter && (
+          {showFilter && (
             <section className="filterBox">
               <form className="filterForm">
                 <div className="organizationWrapper">
