@@ -5,7 +5,6 @@ import viteLogo from '/vite.svg'
 import './index.css'
 import Login from './components/login'
 import Dashboard from './components/Dashboard/Dashboard'
-import FilterDashboard from './components/FilterDashboard/FilterDashboard'
 import UserDetails from './components/UserDetails/UserDetails'
 
 function App() {
