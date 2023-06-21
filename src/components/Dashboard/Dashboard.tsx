@@ -3,7 +3,13 @@ import DashboardDetails from "./DashboardDetails";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
-function Dashboard({handleSidebar, showSidebar}:{handleSidebar():void, showSidebar:boolean}) {
+function Dashboard({
+  handleSidebar,
+  showSidebar,
+}: {
+  handleSidebar(): void;
+  showSidebar: boolean;
+}) {
   // const [showSidebar, setShowSideBar] = useState(true);
 
   // const toggleSidebar = ():void => {
@@ -13,10 +19,10 @@ function Dashboard({handleSidebar, showSidebar}:{handleSidebar():void, showSideb
   // let ShowLogo = true
   return (
     <div className="dashboardContainer">
-      <Header handleSidebar = {handleSidebar} />
+      <Header handleSidebar={handleSidebar} />
       {showSidebar && <Sidebar />}
       <main>
-        <DashboardDetails  />
+        <DashboardDetails />
       </main>
     </div>
   );

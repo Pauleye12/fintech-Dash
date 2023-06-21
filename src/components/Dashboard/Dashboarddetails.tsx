@@ -2,7 +2,7 @@ import React from "react";
 
 import Users from "./Users";
 import Table from "./Table";
-function Dashboarddetails() {
+function DashboardDetails() {
   return (
     <div className="dashBody">
       <div className="dashBodyWrapper">
@@ -13,4 +13,4 @@ function Dashboarddetails() {
   );
 }
 
-export default Dashboarddetails;
+export default DashboardDetails;
