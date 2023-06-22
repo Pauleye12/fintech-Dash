@@ -53,12 +53,13 @@ function Table() {
   const [hideBtnDecr, setHideBtnDecr] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
+const [isError, setIsError] = useState(false);
   const toggleFilter = ():void => {
     setShowFilter((prev) => !prev)
   }
   useEffect(() => {
     setIsLoading(true)
+    setIsError(false)
     const fetchTableData = async () => {
       try {
         const res = await fetch(
@@ -67,9 +68,8 @@ function Table() {
         const resJson: TableCont[] = await res.json();
         setTableInfo(resJson);
         setIsLoading(false)
-        console.log("hy");
-      } catch (error) {
-        alert("error.message")
+      } catch (err) {
+        setIsError(true)
         setIsLoading(false);
         console.log("error fetching data");
       }
@@ -87,7 +87,7 @@ function Table() {
     pageNumber * contentNum,
     pageNumber * contentNum + contentNum
   );
-
+console.log(pageContent)
   let selectPage = useCallback(
     (num: number) => () => {
       setPageNumber(num - 1);
@@ -127,7 +127,7 @@ function Table() {
                 <img
                   src="/svg/filter-results-button.svg"
                   onClick={toggleFilter}
-                   alt=""
+                  alt=""
                 />
               </div>
             </th>
@@ -182,47 +182,99 @@ function Table() {
               </div>
             </th>
           </tr>
-          {isLoading? <div>Loading, please wait</div>: pageContent.map((data, index) => (
-            <Link
-              to={`/User/details/${data.id}`}
-              className="tableContent a"
-              key={index}
-            >
-              <td className="dashTd orgName">
-                <div>
-                  <h1>{data.orgName}</h1>
-                </div>
-              </td>
+          {isLoading && !isError ? (
+            <div>Fetching data, please wait...</div>
+          ) : (
+            pageContent.map((data, index) => (
+              <Link
+                to={`/User/details/${data.id}`}
+                className="tableContent a"
+                key={index}
+              >
+                <td className="dashTd orgName">
+                  <div>
+                    <h1>{data.orgName}</h1>
+                  </div>
+                </td>
 
-              <td className="dashTd userName">
-                <div>
-                  <h1>{data.userName}</h1>
-                </div>
-              </td>
-              <td className="dashTd email">
-                <div>
-                  <h1>{data.email}</h1>
-                </div>
-              </td>
-              <td className="dashTd phoneNumber">
-                <div>
-                  <h1>{data.phoneNumber}</h1>
-                </div>
-              </td>
-              <td className="dashTd createdAt">
-                <div>
-                  <h1>
-                    {dayjs(data.createdAt).format("MMM DD, YYYY. h:mm A")}
-                  </h1>
-                </div>
-              </td>
-              <td className="dashTd">
-                <div>
-                  <h1>status</h1>
-                </div>
-              </td>
-            </Link>
-          ))}
+                <td className="dashTd userName">
+                  <div>
+                    <h1>{data.userName}</h1>
+                  </div>
+                </td>
+                <td className="dashTd email">
+                  <div>
+                    <h1>{data.email}</h1>
+                  </div>
+                </td>
+                <td className="dashTd phoneNumber">
+                  <div>
+                    <h1>{data.phoneNumber}</h1>
+                  </div>
+                </td>
+                <td className="dashTd createdAt">
+                  <div>
+                    <h1>
+                      {dayjs(data.createdAt).format("MMM DD, YYYY. h:mm A")}
+                    </h1>
+                  </div>
+                </td>
+                <td className="dashTd">
+                  <div>
+                    <h1>status</h1>
+                  </div>
+                </td>
+              </Link>
+            ))
+          )}
+
+          {!isLoading && isError ? (
+            <div>
+              Error loading Data, please check your internet connection.
+            </div>
+          ) : (
+            pageContent.map((data, index) => (
+              <Link
+                to={`/User/details/${data.id}`}
+                className="tableContent a"
+                key={index}
+              >
+                <td className="dashTd orgName">
+                  <div>
+                    <h1>{data.orgName}</h1>
+                  </div>
+                </td>
+
+                <td className="dashTd userName">
+                  <div>
+                    <h1>{data.userName}</h1>
+                  </div>
+                </td>
+                <td className="dashTd email">
+                  <div>
+                    <h1>{data.email}</h1>
+                  </div>
+                </td>
+                <td className="dashTd phoneNumber">
+                  <div>
+                    <h1>{data.phoneNumber}</h1>
+                  </div>
+                </td>
+                <td className="dashTd createdAt">
+                  <div>
+                    <h1>
+                      {dayjs(data.createdAt).format("MMM DD, YYYY. h:mm A")}
+                    </h1>
+                  </div>
+                </td>
+                <td className="dashTd">
+                  <div>
+                    <h1>status</h1>
+                  </div>
+                </td>
+              </Link>
+            ))
+          )}
           {showFilter && (
             <section className="filterBox">
               <form className="filterForm">
@@ -298,7 +350,8 @@ function Table() {
           <h1>
             Showing{" "}
             <span className="contentNumDisp">
-              {contentNum} <img src={dropDown} alt="" />{" "}
+              {`${pageContent[0].id}-${pageContent[9].id}`}{" "}
+              <img src={dropDown} alt="" />{" "}
             </span>{" "}
             out of <span>{tableInfo.length} </span>
           </h1>
