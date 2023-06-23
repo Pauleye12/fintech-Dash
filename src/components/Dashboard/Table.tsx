@@ -345,7 +345,7 @@ console.log(pageContent)
           )}
         </table>
       </div>
-      <section className="tableNav">
+      {!isLoading && !isError? <section className="tableNav">
         <div className="leftTableNav">
           <h1>
             Showing{" "}
@@ -376,7 +376,7 @@ console.log(pageContent)
             </button>
           )}
         </div>
-      </section>
+      </section>: <div></div>}
     </div>
   );
 }

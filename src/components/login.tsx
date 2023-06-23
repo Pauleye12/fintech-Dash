@@ -46,9 +46,11 @@ function Login() {
                   <span>show</span>
                 </div>
                 <p>forgot password? </p>
-                <Link to="/Dashboard">
-                  <button className="loginBtn">LOGIN</button>
-                </Link>
+                <div className="loginBtn">
+                  <Link to="/Dashboard">
+                    <button className="loginBtn">LOGIN</button>
+                  </Link>
+                </div>
               </form>
             </div>
           </div>

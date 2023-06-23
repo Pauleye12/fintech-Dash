@@ -712,8 +712,8 @@ td {
 /* LOGIN */
 @media screen and (max-width: 1020px) {
   .loginContainer {
-    display: grid;
-    place-items: center;
+    /* display: grid;
+    place-items: center; */
     height: 100vh;
   }
 
@@ -743,10 +743,26 @@ td {
     border-radius: 7px;
     padding: 10px;
     padding-bottom: 25px;
+    display: grid;
+    place-items: center;
     background-color: rgba(255, 255, 255, 0.562);
   }
   .welcomeText {
     margin-bottom: 25px;
+    width:100%;
+    text-align: center;
+  }
+  .form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .form form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .form input {
     background-color: rgba(255, 255, 255, 0.562);
@@ -754,6 +770,10 @@ td {
   .form p,
   .passwordWrapper span {
     font-weight: 700;
+  }
+  .loginBtn{
+    max-width: 400px;
+    width: 100%;
   }
 
   /* DASHBOARD HEADER */
